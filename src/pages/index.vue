@@ -1,10 +1,16 @@
 <script setup lang="ts">
 import { ref } from "vue";
-import { useRouter } from "vue-router";
+import { useRoute,  useRouter } from "vue-router";
 import type { FormInstance } from 'element-plus'
 
 import { create, login } from "@/firebase/auth";
 import { type UserAuth} from "@/types";
+import App from "@/App.vue";
+import AppLink from "@/components/AppLink.vue";
+
+const route = useRoute();
+const router = useRouter();
+const action = ref('login');
 
 const formRef = ref<FormInstance>()
 const form = ref<UserAuth>({
@@ -28,8 +34,7 @@ const formRules = {
   ]
 }
 
-const router = useRouter();
-const action = ref('create');
+
 
 const submitting = ref(false);
 const submit = () => {
@@ -65,13 +70,11 @@ const reset = () => {
 <template>
   <ElContainer>
     <ElRow>
-      <ElCol :span="24">
+      <ElCol :span="10">
         <h1>Welcome to IO Chat!</h1>
         <p>Please provide a username and password to {{ action === 'create' ? 'create an account' : 'login into account'}}</p>
       </ElCol>
-    </ElRow>
-    <ElRow>
-      <ElCol :span="24">
+      <ElCol :span="14">
 
         <el-radio-group v-model="action">
           <el-radio value="login" size="large">Login</el-radio>

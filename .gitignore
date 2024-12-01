@@ -31,3 +31,5 @@ coverage
 
 yarn.lock
 .env
+auto-imports.d.ts
+components.d.ts

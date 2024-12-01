@@ -17,7 +17,7 @@ const handleClose = (key: string, keyPath: string[]) => {
 <template>
   <el-row class="tac">
     <el-col :span="8">
-      <h4>All Chats (0)</h4>
+      <h4>Admin Chats (0)</h4>
       <hr />
       <el-menu
         default-active="2"
