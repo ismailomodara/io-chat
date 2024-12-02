@@ -67,9 +67,9 @@ const router = createRouter({
       }
     },
     {
-      path: '/customers/',
-      name: 'customers',
-      component: () => Route,
+      path: '/customers',
+      // name: 'customers',
+      // component: () => Route,
       meta: {
         authenticated: false
       },
@@ -85,12 +85,14 @@ const router = createRouter({
           component: () => CustomersCreate
         },
         {
-          path: ':id/',
-          component: () => Route,
+          path: ':id',
+          // component: () => Route,
+          // props: true,
           children: [
             {
               path: 'home',
               component: () => Customer,
+              props: true,
               name: 'customers.customer.home',
             },
             {
@@ -98,7 +100,7 @@ const router = createRouter({
               redirect: { name: 'customers.customer.home' }
             },
             {
-              path: ':tab?',
+              path: ':tab',
               component: () => Customer,
               name: 'customers.customer.tab',
             },
@@ -112,6 +114,7 @@ const router = createRouter({
             {
               path: 'orders',
               name: 'customers.customer.orders',
+              props: route => ({ id: route.params.id && parseInt(route.params.id), name: 'Jamiu Ajia ' }),
               component: () => CustomerOrders
             }
           ]
